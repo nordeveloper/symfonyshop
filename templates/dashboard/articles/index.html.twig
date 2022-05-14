@@ -1,0 +1,58 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+<div class="card">
+
+<div class="card-header">
+ <h3>Articles</h3>
+ <p><a class="btn btn-success" href="{{ path('dashboard_articles_new') }}">Add Article</a></p>
+</div>
+
+<div class="card-body">
+   <table class="table table-bordered admin-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Active</th>
+                <th>Title</th>
+                <th>Sort</th>
+                <th>Created by</th>
+                <th>Preview text</th>
+                <th>Preview image</th>
+                <th>Detail text</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.active }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.sort }}</td>
+                <td>{{ article.createdBy }}</td>
+                <td>{{ article.previewText }}</td>
+                <td>
+                    {% if article.previewImage %}
+                        <a target="_blank" href="{{ article.previewImage }}"><img src="{{ article.previewImage }}"></a>
+                    {% endif %}
+                </td>
+                <td>{{ article.detailText }}</td>
+                <td>
+                    <a href="{{ path('dashboard_articles_show', {'id': article.id}) }}">Show</a>
+                    <a href="{{ path('dashboard_articles_edit', {'id': article.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+ 
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+<div class="card">
+<div class="card-header">
+    <h3>Users</h3>
+    <p><a class="btn btn-success" href="{{ path('user_new') }}">Add new user</a> </p>   
+</div>
+
+<div class="card-body">
+
+<div class="table-responsive">
+    <table class="table table-bordered admin-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Created_date</th>
+                <th>Updated_date</th>
+                <th>Active</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.createdDate ? user.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.updatedDate ? user.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.active }}</td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Reviews{% endblock %}
+
+{% block body %}
+    <h1>Reviews</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ review.id }}</td>
+            </tr>
+            <tr>
+                <th>Created_by</th>
+                <td>{{ review.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>Created_date</th>
+                <td>{{ review.createdDate ? review.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_date</th>
+                <td>{{ review.updatedDate ? review.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ review.active }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ review.title }}</td>
+            </tr>
+            <tr>
+                <th>Preview_text</th>
+                <td>{{ review.previewText }}</td>
+            </tr>
+            <tr>
+                <th>Preview_image</th>
+                <td>{{ review.previewImage }}</td>
+            </tr>
+            <tr>
+                <th>Detail_image</th>
+                <td>{{ review.detailImage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reviews_index') }}">back to list</a>
+
+    <a href="{{ path('reviews_edit', {'id': review.id}) }}">edit</a>
+
+    {{ include('reviews/_delete_form.html.twig') }}
+{% endblock %}

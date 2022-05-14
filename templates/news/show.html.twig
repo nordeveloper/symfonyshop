@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+
+<h1>{{ news.title }}</h1>
+{{ news.createdDate ? news.createdDate|date('Y-m-d H:i:s') : '' }}
+
+{{ news.previewText }}
+
+{% if news.detailImage %}
+    <p><img class="img-reponsive" src="{{ news.detailImage }}" alt="{{ news.title }}"></p>
+{% endif %}  
+
+{{ news.detailText }}
+
+<p><a href="{{ path('news_index') }}">Назад к списку</a></p>
+{% endblock %}

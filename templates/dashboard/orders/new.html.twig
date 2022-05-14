@@ -1,0 +1,12 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}New Orders{% endblock %}
+
+{% block body %}
+    <h3>Создание нового заказа</h3>
+
+    <p><a href="{{ path('dashboard_orders_index') }}">back to list</a></p>
+
+    {{ include('dashboard/orders/_form.html.twig') }}
+
+{% endblock %}

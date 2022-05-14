@@ -1,0 +1,29 @@
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_widget(form.active) }}
+ </div>
+
+<div class="form-group">     
+    {{ form_widget(form.name, { 'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="form-group">
+    {{ form_widget(form.previewImage) }}
+</div>
+
+ <div class="form-group">
+    {{ form_widget(form.previewText, { 'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="form-group">    
+    {{ form_widget(form.detailText, { 'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="form-group">
+    {{ form_widget(form.detailImage) }}
+</div>    
+
+<div class="form-group">
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+</div>
+{{ form_end(form) }}

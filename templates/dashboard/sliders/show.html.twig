@@ -1,0 +1,63 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Sliders{% endblock %}
+
+{% block body %}
+    <h3>Sliders</h3>
+
+    <p><a href="{{ path('dashboard_sliders_index') }}">back to list</a></p>
+
+    <table class="table table-bordered admin-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ slider.id }}</td>
+            </tr>
+            <tr>
+                <th>Created_by</th>
+                <td>{{ slider.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>Дата создания</th>
+                <td>{{ slider.createdDate ? slider.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Дата обнновления</th>
+                <td>{{ slider.updatedDate ? slider.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Активность</th>
+                <td>{{ slider.active }}</td>
+            </tr>
+            <tr>
+                <th>Заголовок</th>
+                <td>{{ slider.title }}</td>
+            </tr>
+            {% if slider.previewImage %}
+            <tr>
+                <th>Изображения</th>
+                <td><a target="_blank"  href="{{ slider.previewImage }}"><img class="img-responsive" src="{{ slider.previewImage }}" alt="{{ slider.title }}"></a></td>
+            </tr>
+            {% endif %}
+
+            {% if slider.detailImage %}
+            <tr>
+                <th>Фон слайдера</th>
+                <td><a target="_blank"  href="{{ slider.detailImage }}"><img class="img-responsive" src="{{ slider.detailImage }}" alt="{{ slider.title }}"></a></td>
+            </tr>
+            {% endif %}            
+            <tr>
+                <th>Текст анонса</th>
+                <td>{{ slider.previewText }}</td>
+            </tr>
+            <tr>
+                <th>Детальный текст</th>
+                <td>{{ slider.detailText }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('sliders_edit', {'id': slider.id}) }}">edit</a>
+
+    {{ include('dashboard/sliders/_delete_form.html.twig') }}
+{% endblock %}

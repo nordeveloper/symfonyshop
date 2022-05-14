@@ -1,0 +1,102 @@
+<div class="form-wrap">
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="col-md-7">
+<div class="card">
+    <div class="card-body">
+
+            <div class="form-group">     
+                {{ form_label(form.active, 'Active') }}
+                {{ form_widget(form.active) }}
+            </div>
+
+            <div class="form-group">     
+                {{ form_label(form.title, 'Title') }}
+                {{ form_widget(form.title, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.category, 'Category') }}
+                {{ form_widget(form.category, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">     
+                {{ form_label(form.price, 'Price') }}
+                {{ form_widget(form.price, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">   
+                {{ form_label(form.discountPrice, 'Discount price') }}  
+                {{ form_widget(form.discountPrice, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.previewText, 'Preview text') }}
+                {{ form_widget(form.previewText, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">  
+                {{ form_label(form.detailText, 'Detail text') }}  
+                {{ form_widget(form.detailText, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">    
+                {{ form_label(form.metaTitle, 'Meta title') }} 
+                {{ form_widget(form.metaTitle, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">  
+                {{ form_label(form.metaDescription, 'Meta description') }}    
+                {{ form_widget(form.metaDescription, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group"> 
+                {{ form_label(form.metaKeywords, 'Meta keywords') }}     
+                {{ form_widget(form.metaKeywords, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+            </div> 
+    </div>
+</div>    
+    </div>
+
+    <div class="col-md-5">
+<div class="card">
+    <div class="card-body">
+
+        <div class="form-group">
+            {% if product.previewImage %}
+            <div class="form-image"><img src="{{product.previewImage}}" alt="{{product.previewImage}}"></div>
+            {% endif %}
+        </div>    
+
+        <div class="form-group">
+            {{ form_label(form.previewImage, 'Preview image') }}
+            {{ form_widget(form.previewImage) }}
+        </div>
+
+        <div class="form-group">
+            {% if product.detailImage %}
+            <div class="form-image">
+            <img src="{{product.detailImage}}" alt="{{product.detailImage}}">
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.detailImage, 'Detail image') }}
+            {{ form_widget(form.detailImage) }}
+        </div>
+
+    </div>
+</div>
+    
+    </div>
+</div>
+
+{{ form_end(form) }}
+
+</div>

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+<div class="card">
+
+<div class="card-header">
+    <h3>My Orders</h3>
+</div>
+
+<div class="card-body">
+
+    <div class="table-responsive">
+    <table class="table table-bordered admin-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created Date</th>
+                <th>Created By</th>
+                <th>Payed</th>
+                <th>Canceled</th>
+                <th>Delivery Date</th>
+                <th>Payed Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>
+                <a href="#">
+                {{ order.id }}
+                </a>
+                </td>
+                <td>{{ order.createdAt ? order.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ order.fio }}</td>
+                <td>{{ order.payed }}</td>
+                <td>{{ order.canceled }}</td>
+                <td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ order.payedDate ? order.payedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+</div>
+</div>
+
+
+</div>
+
+{% endblock %}
+
+

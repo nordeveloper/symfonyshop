@@ -1,0 +1,78 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block body %}
+    <h3>{{ news.title }}</h3>
+
+    <p><a href="{{ path('dashboard_news_index') }}">назад с списку</a></p>
+
+    <table class="table table-bordered admin-table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ news.id }}</td>
+            </tr>
+            <tr>
+                <th>Кем создан</th>
+                <td>{{ news.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>Дата создания</th>
+                <td>{{ news.createdDate ? news.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Дата обновления</th>
+                <td>{{ news.updatedDate ? news.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Активность</th>
+                <td>{{ news.active }}</td>
+            </tr>
+            <tr>
+                <th>Загаловок</th>
+                <td>{{ news.title }}</td>
+            </tr>
+            <tr>
+                <th>Текст анонса</th>
+                <td>{{ news.previewText }}</td>
+            </tr>
+            <tr>
+                <th>Детальный текс</th>
+                <td>{{ news.detailText }}</td>
+            </tr>
+
+            {% if news.previewImage %}
+            <tr>
+                <th>Изображения анонса</th>
+                <td><a target="_blank"  href="{{ news.previewImage }}"><img class="img-responsive" src="{{ news.previewImage }}" alt="{{ news.title }}"></a></td>
+            </tr>
+            {% endif %}
+
+            {% if news.detailImage %}
+            <tr>
+                <th>Детальная картинка</th>
+                <td><a target="_blank"  href="{{ news.detailImage }}"><img class="img-responsive" src="{{ news.detailImage }}" alt="{{ news.title }}"></a></td>
+            </tr>
+            {% endif %}
+            
+            <tr>
+                <th>Meta title</th>
+                <td>{{ news.metaTitle }}</td>
+            </tr>
+            <tr>
+                <th>Meta description</th>
+                <td>{{ news.metaDescription }}</td>
+            </tr>            
+            <tr>
+                <th>Meta keywords</th>
+                <td>{{ news.metaKeywords }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('news_edit', {'id': news.id}) }}">edit</a>
+
+    <a href="{{ path('dashboard_news_index') }}">back to list</a>
+
+{% endblock %}

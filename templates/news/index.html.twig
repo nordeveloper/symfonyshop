@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h1>Новости</h1>
+
+    <div class="row news-list">
+        {% for news in news %}
+            <div class="news-item col-xs-12 col-sm-6">
+                <h3><a href="{{ path('news_show', {'id': news.id}) }}">{{ news.title }}</a></h3>
+                <p>Автор: {{ news.createdBy }} {{ news.createdDate ? news.createdDate|date('Y-m-d H:i:s') : '' }} </p>
+
+                {% if news.previewImage %}
+                <p><img class="img-responsive" src="{{ news.previewImage }}" alt="{{ news.title }}"></p>
+                {% endif %}                
+
+                <p>{{ news.previewText }}</p>
+
+            </div>
+        {% else %}
+            no records found
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

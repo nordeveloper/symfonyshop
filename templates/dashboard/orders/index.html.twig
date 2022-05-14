@@ -1,0 +1,57 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Orders{% endblock %}
+
+{% block body %}
+
+<div class="card">
+
+<div class="card-header">
+    <h3>Orders</h3>
+    <p><a class="btn btn-success" href="{{ path('dashboard_order_new') }}">Add new order</a></p>
+</div>
+
+<div class="card-body">
+
+    <div class="table-responsive">
+    <table class="table table-bordered admin-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created Date</th>
+                <th>Created By</th>
+                <th>Payed</th>
+                <th>Canceled</th>
+                <th>Delivery Date</th>
+                <th>Payed Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.createdDate ? order.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ order.fio }}</td>
+                <td>{{ order.payed }}</td>
+                <td>{{ order.canceled }}</td>
+                <td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ order.payedDate ? order.payedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('dashboard_order_show', {'id': order.id}) }}">show</a>
+                    <a href="{{ path('dashboard_order_edit', {'id': order.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+</div>
+</div>
+
+{% endblock %}

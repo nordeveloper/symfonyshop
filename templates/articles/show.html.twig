@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ result.title }}{% endblock %}
+
+{% block body %}
+
+<h1>{{ result.title }}</h1>
+{#{{ result.createdDate ? result.createdDate|date('Y-m-d H:i:s') : '' }}#}
+
+{{ result.previewText }}
+
+{% if result.detailImage %}
+    <p><img class="img-reponsive" src="{{ result.detailImage }}" alt="{{ result.title }}"></p>
+{% endif %}  
+
+{{ result.detailText }}
+
+<p><a href="{{ path('articles_index') }}">Назад к списку</a></p>
+{% endblock %}

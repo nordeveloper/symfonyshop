@@ -1,0 +1,72 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block body %}
+
+<div class="card">
+
+<div class="card-header">
+    <h4>News</h4>    
+    <p><a class="btn btn-success" href="{{ path('news_new') }}">Add news</a></p>
+</div>
+
+<div class="card-body">
+    <table class="table table-bordered admin-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Active</th>
+                <th>Created by</th>
+                <th>Created date</th>
+                <th>Title</th>
+                <th>Preview image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for news in news %}
+            <tr>
+                <td>{{ news.id }}</td>
+                <td>
+                {% if news.active %}
+                    Да
+                {% else %} 
+                    Нет
+                {% endif %}   
+                </td>
+                <td>{{ news.createdBy }}</td>
+                <td>{{ news.createdDate ? news.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+
+                <td>{{ news.title }}</td>
+
+                <td>
+                {% if news.previewImage %}
+                <a target="_blank" href="{{ news.previewImage }}"><img src="{{ news.previewImage }}"></a>
+                {% endif %}
+                </td>
+
+                <td class="actions-column">
+                    <a href="{{ path('dashboard_news_show', {'id': news.id}) }}"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('news_edit', {'id': news.id}) }}"><i class="fas fa-edit"></i></a>
+					
+            <form method="post" action="{{ path('news_delete', {'id': news.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ news.id) }}">
+                <button class="btn"><i class='fas fa-trash-alt'></i></button>
+            </form>
+					
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>    
+
+</div>
+
+{% endblock %}

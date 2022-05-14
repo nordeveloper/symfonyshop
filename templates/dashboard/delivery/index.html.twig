@@ -1,0 +1,55 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Delivery{% endblock %}
+
+{% block body %}
+
+    <div class="card">
+
+    <div class="card-header">
+        <h3>Delivery</h3>
+        <a class="btn btn-success" href="{{ path('dashboard_delivery_new') }}">Add Delivry</a>
+    </div>
+
+        <div class="card-body">
+        <div class="table-responsive">
+
+    <table class="table table-bordered admin-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Active</th>
+                <th>Sort</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for delivery in deliveries %}
+            <tr>
+                <td>{{ delivery.id }}</td>
+                <td>{{ delivery.active }}</td>
+                <td>{{ delivery.sort }}</td>
+                <td>{{ delivery.title }}</td>
+                <td>{{ delivery.image }}</td>
+                <td>{{ delivery.price }}</td>
+                <td>
+                    <a href="{{ path('dashboard_delivery_show', {'id': delivery.id}) }}">show</a>
+                    <a href="{{ path('dashboard_delivery_edit', {'id': delivery.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>        
+        
+        </div>
+        </div>
+    </div>
+
+{% endblock %}

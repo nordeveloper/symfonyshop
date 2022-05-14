@@ -1,0 +1,11 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}New Category{% endblock %}
+
+{% block body %}
+    <h4>Add Category</h4>
+
+    {{ include('dashboard/category/_form.html.twig') }}
+
+    <a href="{{ path('dashboard_category_index') }}">back to list</a>
+{% endblock %}

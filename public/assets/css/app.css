@@ -1,0 +1,17 @@
+.basket-image{
+    width: 150px;
+}
+
+.basket-image .p-image{
+    max-width: 150px;
+    display: block;
+    overflow: hidden;
+}
+
+.img-responsive{
+    max-width: 100%;
+}
+
+.input-quantity{
+    max-width: 100px;
+}
