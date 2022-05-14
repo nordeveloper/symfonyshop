@@ -56,7 +56,6 @@ class OrderController extends AbstractController
             ->getRepository(Payment::class)
             ->findAll();
 
-        //dd($payments);
 
         $deliverylist = $this->getDoctrine()
             ->getRepository(Delivery::class)
