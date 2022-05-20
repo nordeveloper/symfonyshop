@@ -23,9 +23,10 @@ class NewsType extends AbstractType
                 'data_class'=>null, 'mapped'=>false, 'required' => false,
              ])            
             ->add('detail_text')
-            ->add('metaTitle')
-            ->add('metaDescription')
-            ->add('metaKeywords');
+            ->add('meta_title')
+            ->add('meta_description')
+            ->add('meta_keywords')
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
