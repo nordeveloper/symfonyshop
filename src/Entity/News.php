@@ -96,6 +96,11 @@ class News
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
+    
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $createdBy;
 
 
     public function getSort(): ?int
@@ -276,6 +281,11 @@ class News
         $this->updated_at = $updated_at;
 
         return $this;
+    }
+
+    public function createdBy(): ?int
+    {
+        return $this->createdBy;
     }
 
 }

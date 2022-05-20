@@ -2,13 +2,13 @@
 
 namespace App\Controller\Dashboard;
 
-use App\Entity\Article;
+use App\Entity\Blog;
 use App\Form\ArticlesType;
-use App\Repository\ArticlesRepository;
+use App\Service\FileUploader;
+use App\Repository\BlogRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\FileUploader;
 
 /**
  * @Route("/dashboard/articles")
@@ -18,7 +18,7 @@ class ArticlesController extends BaseController
     /**
      * @Route("/", name="dashboard_articles_index", methods={"GET"})
      */
-    public function index(ArticlesRepository $articlesRepository): Response
+    public function index(BlogRepository $articlesRepository): Response
     {
         return $this->render('dashboard/articles/index.html.twig', [
             'articles' => $articlesRepository->findAll(), 'user'=>$this->user
@@ -30,7 +30,7 @@ class ArticlesController extends BaseController
      */
     public function new(Request $request, FileUploader $fileUploader): Response
     {
-        $article = new Article();
+        $article = new Blog();
         $form = $this->createForm(ArticlesType::class, $article);
         $form->handleRequest($request);
 
@@ -69,7 +69,7 @@ class ArticlesController extends BaseController
     /**
      * @Route("/{id}", name="dashboard_articles_show", methods={"GET"})
      */
-    public function show(Article $article): Response
+    public function show(Blog $article): Response
     {
         return $this->render('dashboard/articles/show.html.twig', [
             'article' => $article, 'user'=>$this->user
@@ -79,7 +79,7 @@ class ArticlesController extends BaseController
     /**
      * @Route("/{id}/edit", name="dashboard_articles_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Article $article, FileUploader $fileUploader): Response
+    public function edit(Request $request, Blog $article, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(ArticlesType::class, $article);
         $form->handleRequest($request);
@@ -117,7 +117,7 @@ class ArticlesController extends BaseController
     /**
      * @Route("/{id}", name="articles_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Article $article): Response
+    public function delete(Request $request, Blog $article): Response
     {
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

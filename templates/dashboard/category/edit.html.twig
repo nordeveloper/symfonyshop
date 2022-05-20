@@ -3,11 +3,10 @@
 {% block title %}Edit Category{% endblock %}
 
 {% block body %}
-    <h1>Edit Category</h1>
+    <h3>Edit Category</h3>
 
-    {{ include('dashboard/category/_form.html.twig', {'button_label': 'Update'}) }}
+     <a href="{{ path('dashboard_category_index') }}">back to list</a>
 
-    <a href="{{ path('dashboard_category_index') }}">back to list</a>
-
-    {{ include('dashboard/category/_delete_form.html.twig') }}
+    {{ include('dashboard/category/_form.html.twig', {'button_label': 'Update'}) }}   
+    
 {% endblock %}

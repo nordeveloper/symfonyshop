@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Article;
+use App\Entity\Blog;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,7 +16,7 @@ class ArticlesType extends AbstractType
             ->add('active')
             ->add('title')
             ->add('sort')
-            ->add('created_by')
+            // ->add('created_by')
             ->add('preview_text')
             ->add('preview_image', FileType::class, [
                 'data_class'=>null, 'mapped'=>false, 'required' => false,
@@ -34,7 +34,7 @@ class ArticlesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Article::class,
+            'data_class' => Blog::class,
         ]);
     }
 }

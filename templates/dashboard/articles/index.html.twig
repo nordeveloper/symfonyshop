@@ -19,6 +19,8 @@
                 <th>Title</th>
                 <th>Sort</th>
                 <th>Created by</th>
+                <th>Created date</th>
+                <th>Updated date</th>
                 <th>Preview text</th>
                 <th>Preview image</th>
                 <th>Detail text</th>
@@ -33,6 +35,10 @@
                 <td>{{ article.title }}</td>
                 <td>{{ article.sort }}</td>
                 <td>{{ article.createdBy }}</td>
+
+                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s')}}</td>
+                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s')}}</td>
+
                 <td>{{ article.previewText }}</td>
                 <td>
                     {% if article.previewImage %}

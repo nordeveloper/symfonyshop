@@ -19,6 +19,7 @@
                 <th>Active</th>
                 <th>Created by</th>
                 <th>Created date</th>
+                <th>Updated date</th>
                 <th>Title</th>
                 <th>Preview image</th>
                 <th>Actions</th>
@@ -36,8 +37,8 @@
                 {% endif %}   
                 </td>
                 <td>{{ news.createdBy }}</td>
-                <td>{{ news.createdDate ? news.createdDate|date('Y-m-d H:i:s') : '' }}</td>
-
+                <td>{{ news.createdAt ? news.createdAt|date('Y-m-d H:i:s')}}</td>
+                <td>{{ news.updatedAt ? news.updatedAt|date('Y-m-d H:i:s')}}</td>
                 <td>{{ news.title }}</td>
 
                 <td>

@@ -37,13 +37,15 @@
                 <td>{{ product.id }}</td>
                 <td>{% if product.active %} Да {% else %} Нет {% endif %}</td>                
                 <td>{{ product.createdBy }}</td>
-                <td>{{ product.createdDate ? product.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s')}}</td>
                 <td>{{ product.title }}</td>
                 <td>{{ product.price}}</td>
 
                 <td>
                 {% if product.previewImage %}
-                <a target="_blank" href="{{ product.previewImage }}"><img src="{{ product.previewImage }}"></a>
+                <a class="td-image" target="_blank" href="{{ product.previewImage }}">
+                <img class="img-responsive" src="{{ product.previewImage }}">
+                </a>
                 {% endif %}
                 </td>
 

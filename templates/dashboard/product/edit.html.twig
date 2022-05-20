@@ -4,8 +4,9 @@
 
 {% block body %}
     <h3>Edit Product</h3>
+    <a href="{{ path('dashboard_products_index') }}">back to list</a>
     
     {{ include('dashboard/product/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('dashboard_products_index') }}">back to list</a>
+    
 {% endblock %}

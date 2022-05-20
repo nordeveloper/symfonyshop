@@ -18,7 +18,7 @@ class CategoryType extends AbstractType
         $builder
             ->add('active')
             ->add('sort')
-            ->add('name')
+            ->add('title')
             ->add('previewImage', FileType::class, [
                 'data_class'=>null, 'mapped'=>false, 'required' => false,
              ])

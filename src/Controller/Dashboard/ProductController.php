@@ -4,11 +4,12 @@ namespace App\Controller\Dashboard;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Service\FileUploader;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-// use Symfony\Component\HttpFoundation\File\File;
-use App\Service\FileUploader;
 
 /**
  * @Route("/dashboard/products")
@@ -32,7 +33,7 @@ class ProductController extends BaseController
     /**
      * @Route("/new", name="product_new", methods={"GET","POST"})
      */
-    public function new(Request $request, FileUploader $fileUploader): Response
+    public function new(Request $request, ManagerRegistry $em, FileUploader $fileUploader): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
@@ -56,10 +57,9 @@ class ProductController extends BaseController
                 }
             }
 
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($product);
-            $entityManager->flush();
+            $em->getEntityManager();
+            $em->persist($product);
+            $em->flush();
 
             return $this->redirectToRoute('dashboard_products_index');
         }

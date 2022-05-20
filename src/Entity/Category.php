@@ -88,6 +88,11 @@ class Category
      */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+    */
+    private $createdBy;
+
 
     public function getSort(): ?int
     {
@@ -243,5 +248,10 @@ class Category
         $this->updated_at = $updated_at;
 
         return $this;
+    }
+
+    public function createdBy(): ?int
+    {
+        return $this->createdBy;
     }
 }

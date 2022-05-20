@@ -25,8 +25,14 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.createdBy }}</td>
-                <td>{{ category.previewImage }}</td>
-                <td>{{ category.name }}</td>
+                <td>
+                {% if category.previewImage %}
+                <a class="td-image" target="_blank" href="{{ category.previewImage }}">
+                <img class="img-responsive" src="{{ category.previewImage }}">
+                </a>
+                {% endif %}
+                </td>
+                <td>{{ category.title }}</td>
                 <td>
                     <a href="{{ path('dashboard_category_show', {'id': category.id}) }}"><i class="fas fa-eye"></i></a>
                     <a href="{{ path('category_edit', {'id': category.id}) }}"><i class="fas fa-edit"></i></a>

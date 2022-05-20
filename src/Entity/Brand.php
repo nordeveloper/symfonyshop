@@ -65,16 +65,6 @@ class Brand
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $video;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $viewcounter;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $meta_title;
 
     /**
@@ -95,7 +85,7 @@ class Brand
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $update_at;
+    private $updated_at;
 
 
     public function getSort(): ?int
@@ -252,5 +242,15 @@ class Brand
         $this->updated_at = $updated_at;
 
         return $this;
+    }
+
+    public function getCreatedBy(): ?int
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy($createdBy): ?int
+    {
+        return $this->createdBy = $createdBy;
     }
 }

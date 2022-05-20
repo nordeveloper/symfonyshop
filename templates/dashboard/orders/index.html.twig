@@ -20,7 +20,7 @@
                 <th>Id</th>
                 <th>Created Date</th>
                 <th>Created By</th>
-                <th>Payed</th>
+                <th>Paid</th>
                 <th>Canceled</th>
                 <th>Delivery Date</th>
                 <th>Payed Date</th>
@@ -31,7 +31,7 @@
         {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
-                <td>{{ order.createdDate ? order.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ order.createdAt ? order.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ order.fio }}</td>
                 <td>{{ order.payed }}</td>
                 <td>{{ order.canceled }}</td>

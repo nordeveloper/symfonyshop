@@ -133,6 +133,13 @@ class Product
      */
     private $updated_at;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $createdBy;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -412,5 +419,10 @@ class Product
         $this->updated_at = $updated_at;
 
         return $this;
+    }
+
+    public function createdBy(): ?int
+    {
+        return $this->createdBy;
     }
 }

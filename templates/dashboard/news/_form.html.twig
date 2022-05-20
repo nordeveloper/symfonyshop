@@ -1,8 +1,87 @@
 {{ form_start(form) }}
 
-    <p><a href="{{ path('dashboard_news_index') }}">Back to list</a></p>
 
-    {{ form_widget(form) }}   
+<div class="row">
+    <div class="col-md-7">
+<div class="card">
+    <div class="card-body">
+
+            {# <div class="d-none">
+            {{ form_label(form.created_by, 'Created by') }}<br>
+            {{ form_widget(form.created_by) }}
+            </div> #}
+
+            {# <div class="form-group">     
+                {{ form_label(form.sort, 'Sort') }}
+                {{ form_widget(form.sort, { 'attr': {'class': 'form-control'}}) }}
+            </div> #}
+
+            <div class="form-group">     
+                {{ form_label(form.active, 'Active') }}
+                {{ form_widget(form.active) }}
+            </div>
+
+            <div class="form-group">     
+                {{ form_label(form.title, 'Title') }}
+                {{ form_widget(form.title, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.preview_text, 'Preview text') }}
+                {{ form_widget(form.preview_text, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">  
+                {{ form_label(form.detail_text, 'Detail text') }}  
+                {{ form_widget(form.detail_text, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">    
+                {{ form_label(form.meta_title, 'Meta title') }} 
+                {{ form_widget(form.meta_title, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">  
+                {{ form_label(form.meta_description, 'Meta description') }}    
+                {{ form_widget(form.meta_description, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group"> 
+                {{ form_label(form.meta_keywords, 'Meta keywords') }}     
+                {{ form_widget(form.meta_keywords, { 'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+            </div> 
+    </div>
+</div>    
+    </div>
+
+    <div class="col-md-5">
+<div class="card">
+    <div class="card-body">
+
+        <div class="form-group">
+            {{ form_label(form.preview_image, 'Preview image') }}
+            {{ form_widget(form.preview_image) }}
+        </div>
+
+        <div class="form-group">
+            {# {% if form.preview_image %}
+            <div class="form-image">
+            <img src="{{form.preview_image}}" alt="{{form.preview_image}}">
+            </div>
+            {% endif %} #}
+
+            {{ form_label(form.detail_image, 'Detail image') }}
+            {{ form_widget(form.detail_image) }}
+        </div>
+
+    </div>
+</div>
     
-    <button class="btn btn-success">Save</button>
+    </div>
+</div>
+
 {{ form_end(form) }}
